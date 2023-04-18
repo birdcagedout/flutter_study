@@ -1,6 +1,6 @@
 # flutter_study
 
-A new Flutter project.
+깡샘의 플러터 다트 프로그래밍 연습입니다
 
 ## Getting Started
 
