@@ -1,6 +1,8 @@
-// Stateless 위젯에서 key 사용 안 했을 때 테스트
+// Key를 사용하지 않은 위젯을 식별하는데 문제가 발생하는지 Test1
+// - 조건: Stateless 위젯 + 같은 클래스 + key 사용 안 함
+// - 결과: Key 없어도 위젯 식별에 아무 문제 없다
 
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
 main() {
@@ -44,7 +46,7 @@ class _MyColorListWidgetState extends State<MyColorListWidget> {
   void onChange() {
     setState(() {
       widgetList.insert(1, widgetList.removeAt(0));
-      print('widgetList[0]: ${widgetList[0].id}, widgetList[1]: ${widgetList[1].col.value.toRadixString(16)}');
+      // print('widgetList[0]: ${widgetList[0]}, widgetList[1]: ${widgetList[1].col.value.toRadixString(16)}');
     });   // setState();
   }
 
@@ -53,7 +55,7 @@ class _MyColorListWidgetState extends State<MyColorListWidget> {
     print('state.build() 실행되었습니다.');
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Key를 사용하지 않은 stateless 위젯'),),
+        appBar: AppBar(title: Text('Key를 사용하지 않은 stateless 위젯 (같은 타입)'),),
         body: Column(
           children: [
             Row(children: widgetList),
