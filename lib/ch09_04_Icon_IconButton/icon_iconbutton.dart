@@ -14,15 +14,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool isOn = false;
-  // Icon buttonIcon = Icon(Icons.lightbulb_outline, size: 200, color: Colors.black, key: UniqueKey(),);
 
-  void onClicked() {
-    print("onPressed() 변경 전: isOn=$isOn");
+  void onPressed() {
+    print("pressed");
     setState(() {
-      // print("onPressed() 변경 전: isOn=$isOn, buttonIcon=${buttonIcon.icon.toString()}");
       isOn = isOn ? false : true;
-      // buttonIcon = isOn ? Icon(Icons.lightbulb, size: 200, color: Colors.amber, key: UniqueKey(),) : Icon(Icons.lightbulb_outline, size: 200, color: Colors.black, key: UniqueKey(),);
-      // print("onPressed() 변경 후: isOn=$isOn, buttonIcon=${buttonIcon.icon.toString()}");
     });
   }
 
@@ -33,9 +29,19 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(title: Text("Icon, IconButton 테스트")),
         body: Column(
           children: [
-            Icon(Icons.alarm, size: 100, color: Colors.red,),
-            FaIcon(FontAwesomeIcons.bell, size: 100, color: Colors.green),
-            IconButton(icon: isOn ? Icon(Icons.lightbulb, size: 200, color: Colors.amber) : Icon(Icons.lightbulb_outline, size: 200, color: Colors.black), onPressed: onClicked),
+            Icon(Icons.alarm, color: Colors.red, size: 100,),
+            // FaIcon(FontAwesomeIcons.bell, color: Colors.green, size: 100,),
+            IconButton(
+              // padding: EdgeInsets.all(0),
+              // constraints: BoxConstraints(minWidth: 0, minHeight: 0),
+              iconSize: 100,
+              onPressed: onPressed,
+              icon: isOn ? Icon(Icons.lightbulb, color: Colors.amber) : Icon(Icons.lightbulb_outline, color: Colors.black)
+            ),
+            GestureDetector(
+              onTap: onPressed,
+              child: Icon(isOn ? Icons.lightbulb : Icons.lightbulb_outline, color: isOn ? Colors.amber : Colors.black, size: 100),
+            )
           ],
         ),
       ),
