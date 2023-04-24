@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     // Align은 child를 특정 위치에 배치할 수 있지만
-    // Stack을 제외한 다른 부모 위젯 속에서는 자유롭게 layout될 수 없기 때문에
+    // Stack을 제외한 다른 부모 위젯의 하위에서는 자유롭게 layout될 수 없기 때문에
     // 아래처럼 함부로 사용하면 안 된다. ==> 원하는 위치에 정확히 배치되지 않는다.
     //
     // return Column(
