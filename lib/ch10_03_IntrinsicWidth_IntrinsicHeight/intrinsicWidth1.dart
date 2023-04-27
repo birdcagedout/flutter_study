@@ -36,21 +36,26 @@ class HomeScreen extends StatelessWidget {
                 width: 50,
                 height: 50,
                 color: Colors.red,
+                child: Text("50x50"),
               ),
               Container(
                 width: 150,
                 height: 150,
                 color: Colors.green,
+                child: Text("150x150"),
               ),
               Container(
                 width: 100,
                 height: 100,
                 color: Colors.blue,
+                child: Text("100x100"),
               ),
               Text("적용안함"),
             ],
           ),
         ),
+        
+        Padding(padding: EdgeInsets.all(20)),
 
         Container(
           color: Colors.yellow[300],
@@ -62,16 +67,19 @@ class HomeScreen extends StatelessWidget {
                   width: 50,
                   height: 50,
                   color: Colors.red,
+                  child: Text("50x50"),
                 ),
                 Container(
                   width: 150,
                   height: 150,
                   color: Colors.green,
+                  child: Text("150x150"),
                 ),
                 Container(
                   width: 100,
                   height: 100,
                   color: Colors.blue,
+                  child: Text("100x100"),
                 ),
                 Text("IntrinsicWidth\n + stretch"),
               ],
