@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final controller = TextEditingController();
 
   // TextField 이벤트 발생시 호출되는 콜백함수: void Function() 타입
-  void onTextEntered() {
+  void onTextFieldChanged() {
     print("[Text 입력됨] ${controller.text}");
   }
 
@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     // controller에 addListener
-    controller.addListener(onTextEntered);
+    controller.addListener(onTextFieldChanged);
   }
 
   @override

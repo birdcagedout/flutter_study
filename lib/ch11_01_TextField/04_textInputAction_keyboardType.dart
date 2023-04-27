@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text("TextField 연습3\nInputDecoration"),),
+        appBar: AppBar(title: Text("TextField 연습4\ntextInputAction, keyboardType"),),
         body: HomeScreen(),
       ),
     );
@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final controllerPW = TextEditingController();
 
   // TextField 이벤트 발생시 호출되는 콜백함수: void Function() 타입
-  void onTextEntered() {
+  void onTextFieldChanged() {
     print("[Text 입력됨] ID: ${controllerID.text} PW: ${controllerPW.text}");
 
     setState(() {
@@ -51,8 +51,8 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     // controller에 addListener
-    controllerID.addListener(onTextEntered);
-    controllerPW.addListener(onTextEntered);
+    controllerID.addListener(onTextFieldChanged);
+    controllerPW.addListener(onTextFieldChanged);
   }
 
   @override
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // decoration
             decoration: InputDecoration(
               labelText: 'ID',
-              hintText: 'ID를 입력하세요',
+              hintText: '아이디를 입력하세요',
               helperText: '아이디를 잊으셨나요?',
               errorText: controllerID.text.length > 10 ? '10글자 이하만 허용됩니다' : null,
               counterText: '${controllerID.text.length} 글자입니다',

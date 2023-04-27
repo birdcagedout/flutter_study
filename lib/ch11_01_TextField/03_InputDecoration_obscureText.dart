@@ -39,9 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
   final controllerPW = TextEditingController();
 
   // TextField 이벤트 발생시 호출되는 콜백함수: void Function() 타입
-  void onTextEntered() {
+  void onTextFieldChanged() {
     print("[Text 입력됨] ID: ${controllerID.text} PW: ${controllerPW.text}");
 
+    // TextField 내용이 변할 때마다 setState를 호출 ==> 다시 build
     setState(() {
     });
   }
@@ -51,8 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     // controller에 addListener
-    controllerID.addListener(onTextEntered);
-    controllerPW.addListener(onTextEntered);
+    controllerID.addListener(onTextFieldChanged);
+    controllerPW.addListener(onTextFieldChanged);
   }
 
   @override
@@ -71,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // decoration
             decoration: InputDecoration(
               labelText: 'ID',
-              hintText: 'ID를 입력하세요',
+              hintText: '아이디를 입력하세요',
               helperText: '아이디를 잊으셨나요?',
               errorText: controllerID.text.length > 10 ? '10글자 이하만 허용됩니다' : null,
               counterText: '${controllerID.text.length} 글자입니다',
@@ -85,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Container(
           margin: EdgeInsets.all(10),
           child: TextField(
-            obscureText: true,                                  // 보안입력=true
+            obscureText: true,                                  // 보안입력 = true
             style: TextStyle(fontSize: 15),
             controller: controllerPW,                           // TextField 생성자의 controller 파라미터로 넘겨준다
 
