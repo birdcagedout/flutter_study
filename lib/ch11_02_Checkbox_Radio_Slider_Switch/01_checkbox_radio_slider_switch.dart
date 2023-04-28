@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text("Checkbox, Radio 연습"),),
+        appBar: AppBar(title: Text("Checkbox, Radio, Slider, Switch 연습"),),
         body: HomeScreen(),
       ),
     );
@@ -33,7 +33,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   // 위젯 변수들
-  bool isChecked = false;             // 체크박스
+  bool? isChecked;                    // 체크박스
   String? selectedPlatform;           // 라디오버튼
   double sliderValue = 0;             // 슬라이더
   bool isOn = false;                  // 스위치
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void onCheckboxChanged(bool? value) {
     print("기존값: $isChecked\t 현재값: $value");
     setState(() {
-      isChecked = value ?? isChecked;
+      isChecked = value;
     });
   }
 
@@ -71,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -80,6 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Row(
           children: [
             Checkbox(
+              tristate: true,                                 // true=checked, false=unchecked, null="a dash"
               value: isChecked,
               onChanged: onCheckboxChanged,
             ),
@@ -138,7 +140,10 @@ class _HomeScreenState extends State<HomeScreen> {
         Padding(padding: EdgeInsets.all(20)),
 
         // 스위치
-        Switch(value: isOn, onChanged: onSwitchChanged),
+        Switch(
+          value: isOn,
+          onChanged: onSwitchChanged
+        ),
       ],
     );
   }
