@@ -1,0 +1,40 @@
+** BuildContext에 관하여 **
+
+0. 정의: The location in the tree where this widget builds.
+
+1. State 객체에는 BuildContext 객체가 연결되어 있다.
+   - State 클래스 내에서 이 객체를 context(getter)로 접근 가능하다.
+   - Stateless/Stateful class 자체에는 context라는 getter가 없다.
+   - A라는 Stateless class의 Build() 호출시 (State class의 Build() 호출시에도) 해당 위젯(A)과 연결된 BuildContext 객체가 들어온다.
+     ==> (주의) A라는 클래스의 build(context)의 인자에, A와 직접 연결된 context가 들어온다는 의미이지,
+                build()가 "return하는 객체"에 연결된 BuildContext 객체가 context라는 의미가 아니다.
+
+2. StatefulWidget에서 createState() 호출 후 (= State 객체 생성 후)
+                    |
+                    |   <-- BuildContext 객체 연결 (by Flutter Framework)
+                    |
+   State에서 initState() 호출 전
+
+3. 이 연결은 영속적(permanent)이며, State 객체는 BulidContext 객체를 절대 바꾸지 않는다.
+
+4. 하지만, BuildContext 객체는 tree 내에서 위치를 이동할 수 있다.
+
+5. State 객체가 dispose() 호출하면 ==> Framework에서 State와 BuildContext 연결을 끊어버린다.
+
+
+/* ================ Documentation 내용 ========================================================
+package:flutter/src/widgets/framework.dart
+BuildContext get context
+
+Containing class: State
+
+The location in the tree where this widget builds.
+
+The framework associates State objects with a BuildContext
+after creating them with StatefulWidget.createState() and before calling initState().
+
+The association is permanent: the State object will never change its BuildContext.
+However, the BuildContext itself can be moved around the tree.
+
+After calling dispose, the framework severs the State object's connection with the BuildContext.
+================ Documentation 내용 ======================================================== */

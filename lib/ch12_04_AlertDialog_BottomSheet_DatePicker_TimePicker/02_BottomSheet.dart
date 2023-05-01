@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 
+
+late BuildContext homescreen_context;
+late BuildContext homescreen_child_context;
+
+
+
 void main() {
   runApp(MyApp());
 }
@@ -30,11 +36,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 
-
-
 class _HomeScreenState extends State<HomeScreen> {
 
   int count = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    homescreen_context = context;
+  }
 
   // 3 showBottomSheet
   void onShowBottomSheet() {
@@ -71,31 +82,31 @@ class _HomeScreenState extends State<HomeScreen> {
   // 4 showModalBottomSheet
   void onShowModalBottomSheet() {
     showModalBottomSheet(
-        context: context,
-        backgroundColor: Colors.amber,
-        builder: (BuildContext context) {
-          return SafeArea(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ListTile(
-                  leading: Icon(Icons.add),
-                  title: Text("추가하기"),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                ListTile(
-                  leading: Icon(Icons.remove),
-                  title: Text("제거하기"),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            ),
-          );
-        }
+      context: context,
+      backgroundColor: Colors.amber,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: Icon(Icons.add),
+                title: Text("추가하기"),
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.remove),
+                title: Text("제거하기"),
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+        );
+      }
     );
   }
 
@@ -115,9 +126,29 @@ class _HomeScreenState extends State<HomeScreen> {
 
           // 테스트용 버튼 ==> BottomSheet가 떠있는 상태에서 위쪽 버튼에 이벤트를 가할 수 있는지 테스트
           ElevatedButton(onPressed: () { setState(() {count++;});}, child: Text("TEST: $count")),
+          HomeScreenChild(),
 
         ],
       ),
     );
+  }
+}
+
+
+class HomeScreenChild extends StatefulWidget {
+  const HomeScreenChild({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreenChild> createState() => _HomeScreenChildState();
+}
+
+class _HomeScreenChildState extends State<HomeScreenChild> {
+  @override
+  Widget build(BuildContext context) {
+    homescreen_child_context = context;
+
+    print("homescreen_context == homescreen_child_context: ${homescreen_context == homescreen_child_context}");
+    print(homescreen_child_context);
+    return Text("");
   }
 }

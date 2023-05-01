@@ -31,7 +31,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  // 1 AlertDialog (barrierDismissible: false)
+  // 1 AlertDialog 콜백 (barrierDismissible: false)
   void onAlertDialog_dismissible_false() {
     showDialog(
       context: context,
@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return AlertDialog(
           title: Text("이용약관"),
           content: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.min,     // 넣지 않으면 화면 전체 크기로 나온다
             children: [
               Text("네이버 서비스 및 제휴 이벤트・혜택 등의 정보를 휴대전화, 이메일로 받을 수 있습니다."),
               Row(
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
 
-  // 2 AlertDialog (barrierDismissible: true)
+  // 2 AlertDialog 콜백 (barrierDismissible: true)
   void onAlertDialog_dismissible_true() {
     showDialog(
       context: context,
@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return AlertDialog(
           title: Text("이용약관"),
           content: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.min,     // 넣지 않으면 화면 전체 크기로 나온다
             children: [
               Text("네이버 서비스 및 제휴 이벤트・혜택 등의 정보를 휴대전화, 이메일로 받을 수 있습니다."),
               Row(
