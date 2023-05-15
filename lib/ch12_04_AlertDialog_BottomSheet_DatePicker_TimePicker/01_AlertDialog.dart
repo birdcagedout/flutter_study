@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 
@@ -31,7 +33,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  // 1 AlertDialog 콜백 (barrierDismissible: false)
+  // 1. AlertDialog 콜백 (barrierDismissible: false)
   void onAlertDialog_dismissible_false() {
     showDialog(
       context: context,
@@ -65,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
 
-  // 2 AlertDialog 콜백 (barrierDismissible: true)
+  // 2. AlertDialog 콜백 (barrierDismissible: true)
   void onAlertDialog_dismissible_true() {
     showDialog(
       context: context,
