@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 
 
@@ -31,6 +29,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+
 class _HomeScreenState extends State<HomeScreen> {
 
   // 1. AlertDialog 콜백 (barrierDismissible: false)
@@ -47,7 +46,10 @@ class _HomeScreenState extends State<HomeScreen> {
               Text("네이버 서비스 및 제휴 이벤트・혜택 등의 정보를 휴대전화, 이메일로 받을 수 있습니다."),
               Row(
                 children: [
-                  Checkbox(value: true, onChanged: (value) {},),
+                  Checkbox(
+                    value: true,
+                    onChanged: (value) {},
+                  ),
                   Text("수신 동의"),
                 ],
               )
@@ -81,18 +83,21 @@ class _HomeScreenState extends State<HomeScreen> {
               Text("네이버 서비스 및 제휴 이벤트・혜택 등의 정보를 휴대전화, 이메일로 받을 수 있습니다."),
               Row(
                 children: [
-                  Checkbox(value: true, onChanged: (value) {},),
+                  Checkbox(
+                    value: true,
+                    onChanged: (value) {},
+                  ),
                   Text("수신 동의"),
                 ],
-              )
+              ),
             ],
           ),
           actions: [
             TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text("OK")
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
             ),
           ],
         );
@@ -109,8 +114,14 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
 
           // AlertDialog 2개
-          ElevatedButton(onPressed: onAlertDialog_dismissible_false, child: Text("1 AlertDialog (barrierDismissible: false)")),
-          ElevatedButton(onPressed: onAlertDialog_dismissible_true, child: Text("2 AlertDialog (barrierDismissible: true)")),
+          ElevatedButton(
+            onPressed: onAlertDialog_dismissible_false,
+            child: Text("1 AlertDialog (barrierDismissible: false)"),
+          ),
+          ElevatedButton(
+            onPressed: onAlertDialog_dismissible_true,
+            child: Text("2 AlertDialog (barrierDismissible: true)"),
+          ),
         ],
       ),
     );
