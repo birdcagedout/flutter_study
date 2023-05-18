@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 void main() {
   runApp(MyApp());
@@ -20,17 +21,23 @@ class MyApp extends StatelessWidget {
 }
 
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
 
-class _HomeScreenState extends State<HomeScreen> {
+  Future<int> sumDelegate() async {
+    print("sumDelegate() 시작...");
+    int result = await sum();
+    // throw 'ERROR메시지';
+    print("sumDelegate() 리턴 직전...");
+    return result;
+  }
+
   Future<int> sum() {
-    int intMax = -1 >>> 1;    // 111...111 ==> bitwise shift right zero fill operator
+    int intMax = -1 >>> 1;    // int타입 최대값 변수가 없어서 직접 만듬 111...111 ==> bitwise shift right zero fill operator
     var sumResult = 0;
+
+    print("sum() 시작...");
 
     return Future<int>(() {
       for (int i = 0; i < 5000000000; i++) {
@@ -41,6 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
           sumResult += i;
         }
       }
+      print("sum() 리턴 직전...");
       return sumResult;
     });
   }
@@ -48,21 +56,27 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: sum(),
+      future: sumDelegate(),
       builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
 
+        // 에러 처리: 항상 처리하는 것이 바람직하다
+        if (snapshot.hasError) {
+          return Center(child: Text('1. 에러 발생한 경우: ${snapshot.error.toString()}'));
+        }
         // snapshot에 data가 들어온 경우
-        if (snapshot.hasData) {
+        else if (snapshot.hasData) {
+          return Center(child: Text('2. Data 들어온 경우: ${snapshot.data}'));
+        }
+        // snapshot에 data가 없는 경우
+        else {
           return Center(
-            child: Text('${snapshot.data}', style: TextStyle(color: Colors.black, fontSize: 30),),
+            child: SizedBox(
+              width: 300,
+              height: 300,
+              child: CircularProgressIndicator(),
+            ),
           );
         }
-
-        // snapshot에 data가 없는 경우
-        return Center(
-          // child: Text('waiting...', style: TextStyle(color: Colors.black, fontSize: 30)),
-          child: CircularProgressIndicator(color: Colors.red, backgroundColor: Colors.blue),
-        );
       }
     );
   }
