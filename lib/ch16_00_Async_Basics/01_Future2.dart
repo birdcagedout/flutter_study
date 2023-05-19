@@ -12,14 +12,14 @@ void main() {
 
 
 void addNum(int num1, int num2) {
-  print("함수 시작...");
+  print("함수 시작($num1 + $num2)...");
 
   // 서버 시뮬레이션
   Future.delayed(Duration(seconds: 2), () {
     print('계산중: $num1 + $num2 = ${num1 + num2}');
   });
 
-  print('함수 완료...');
+  print('함수 완료($num1 + $num2)...');
 }
 
 // <실행결과>
