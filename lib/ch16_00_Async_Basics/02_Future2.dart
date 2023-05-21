@@ -1,10 +1,9 @@
+// 리턴값을 이용하지 않는 예제
+
+
 void main() {
 
-  // 1. Future객체=generic
-  Future<int> num = Future.value(1);
-  Future<String> name = Future.value('코드팩토리');
-
-  // 2. 함수 내부에서 Future.delayed 사용하는 경우
+  // 함수 내부에서 Future.delayed 사용하는 경우
   addNum(1, 1);
   addNum(2, 2);
 
@@ -14,9 +13,9 @@ void main() {
 void addNum(int num1, int num2) {
   print("함수 시작($num1 + $num2)...");
 
-  // 서버 시뮬레이션
+  // 서버 시뮬레이션: 바로 리턴한다 ==> 지연시간 후 콜백함수 호출됨
   Future.delayed(Duration(seconds: 2), () {
-    print('계산중: $num1 + $num2 = ${num1 + num2}');
+    print('계산완료: $num1 + $num2 = ${num1 + num2}');
   });
 
   print('함수 완료($num1 + $num2)...');

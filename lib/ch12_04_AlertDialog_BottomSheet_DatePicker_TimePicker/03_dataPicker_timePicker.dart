@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
     DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),  // initialDate=2023년인데 firstDate=2026년인 경우: (에러) initialDate must be on or after firstDate
-      firstDate: DateTime(2026),    // 2016으로 한 경우: 2015가 목록에 있으나 선택이 안 됨
+      firstDate: DateTime(2020),    // 2016으로 한 경우: 2015가 목록에 있으나 선택이 안 됨
       lastDate: DateTime(2030));
     if (picked != null) {
       setState(() {
