@@ -38,28 +38,34 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
   // 날짜 고르기
-  Future onDatePicker() async {
+  Future<void> onDatePicker() async {
     DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),  // initialDate=2023년인데 firstDate=2026년인 경우: (에러) initialDate must be on or after firstDate
       firstDate: DateTime(2020),    // 2016으로 한 경우: 2015가 목록에 있으나 선택이 안 됨
       lastDate: DateTime(2030));
+
     if (picked != null) {
       setState(() {
         dateValue = picked;
       });
+    } else {
+      print("picker is null");
     }
   }
 
   // 시간 고르기
-  Future onTimePicker() async {
+  Future<void> onTimePicker() async {
     TimeOfDay? picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now());
+
     if (picked != null) {
       setState(() {
         timeValue = picked;
       });
+    } else {
+      print("picker is null");
     }
   }
 
