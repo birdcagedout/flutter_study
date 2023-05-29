@@ -46,9 +46,15 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         title: Text('TabBar 연습'),
         bottom: TabBar(
           controller: controller,
+          // indicatorColor: Colors.pink,
+          // dividerColor: Colors.green,
+          // labelColor: Colors.yellow,
+          // unselectedLabelColor: Colors.white,
+
           tabs: [
-            Tab(text: "One",),
-            Tab(text: "Two",),
+            // Tab(icon: Icon(Icons.add), text: "One",),
+            Tab(child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [Icon(Icons.add), Text("One")],),),
+            Tab(child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [Icon(Icons.rocket), Text("Two")],),),
             Tab(text: "Three",),
           ],
         ),
