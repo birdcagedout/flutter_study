@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+
 class Screen1 extends StatelessWidget {
+  const Screen1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +21,9 @@ class Screen1 extends StatelessWidget {
                     onPressed: () {Navigator.of(context).pushNamed('/screen2');},
                     child: Text('Go to Screen2')),
 
-                ElevatedButton(
-                    onPressed: () {Navigator.of(context).pop();},
-                    child: Text('Pop')),
+                // ElevatedButton(
+                    // onPressed: () {Navigator.of(context, rootNavigator: true).pop();},    // 이렇게 해본들 의미없다(black screen)
+                    // child: Text('Pop')),
               ],
             ),
           ),

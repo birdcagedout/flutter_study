@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Screen4 extends StatelessWidget {
+  const Screen4({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,8 @@ class Screen4 extends StatelessWidget {
                 Text('Screen4', style: TextStyle(color: Colors.white, fontSize: 30),),
                 ElevatedButton(
                   onPressed: () {Navigator.of(context).pop();},
-                  child: Text('Pop')),
+                  child: Text('Pop')
+                ),
               ],
             ),
           ),
